@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvanr7s4ed8y"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_yd6yw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ui272"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn1fg"]
+size = Vector2(1316.61, 555.526)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_yd6yw")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-2, -1)
+rotation = 0.0157584
+scale = Vector2(0.120035, 0.120035)
+color = Color(0.298039, 0.537255, 1, 1)
+offset = Vector2(-850, -700)
+texture = SubResource("CanvasTexture_ui272")
+polygon = PackedVector2Array(530, 390, 1229, 376, 1238, 953, 523, 965)
+uv = PackedVector2Array(530, 390, 1229, 376, 1238, 953, 523, 965)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75678, -5.44464)
+rotation = -3.12583
+scale = Vector2(0.0641173, -0.126418)
+shape = SubResource("RectangleShape2D_dn1fg")
