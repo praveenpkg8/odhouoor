@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d31euen31yxw8"]
+[gd_scene load_steps=5 format=3 uid="uid://d31euen31yxw8"]
 
 [ext_resource type="PackedScene" uid="uid://nvanr7s4ed8y" path="res://scenes/player.tscn" id="1_8m5xe"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_wtan0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mtwts"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_otlhr"]
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_wtan0")
 
 [node name="player" parent="." instance=ExtResource("1_8m5xe")]
 position = Vector2(178, 196)
@@ -15,3 +19,9 @@ position = Vector2(178, 196)
 position = Vector2(321, 269)
 scale = Vector2(4.44, 4.44)
 shape = SubResource("WorldBoundaryShape2D_mtwts")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-214, 13)
+texture = SubResource("CanvasTexture_otlhr")
+polygon = PackedVector2Array(438, 174, 501, 527, 878, 350)
+uv = PackedVector2Array(438, 174, 439, 234, 533, 209)
