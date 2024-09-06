@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmcyunmsmgq10"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_efr3u"]
+[ext_resource type="PackedScene" uid="uid://cl7dc4ipuxmap" path="res://enemy/enemyAi.tscn" id="2_al2kq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qmcih"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_efr3u")
+enemyAI = ExtResource("2_al2kq")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.254902, 0.258824, 1)
+texture = SubResource("CanvasTexture_qmcih")
+polygon = PackedVector2Array(184, -144, 504, -144, 504, 56, 176, 56, 184, 56, 176, 56)
+uv = PackedVector2Array(184, -144, 504, -144, 504, 56, 176, 56, 176, 56, 176, 56)
+internal_vertex_count = 1
