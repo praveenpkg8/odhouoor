@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl7dc4ipuxmap"]
+
+[ext_resource type="Script" path="res://enemy/components/enemy_ai/selector.gd" id="1_ieg82"]
+[ext_resource type="Script" path="res://enemy/components/enemy_ai/sequence.gd" id="2_xpxsb"]
+[ext_resource type="Script" path="res://enemy/components/enemy_ai/leaf_nodes/follow_through.gd" id="3_wprhc"]
+[ext_resource type="Script" path="res://enemy/components/enemy_ai/leaf_nodes/player_near_by.gd" id="4_s8qrt"]
+[ext_resource type="Script" path="res://enemy/components/enemy_ai/leaf_nodes/attack.gd" id="5_3nekj"]
+[ext_resource type="Script" path="res://enemy/patrol.gd" id="6_qixvi"]
+
+[node name="enemyAi" type="Node2D"]
+
+[node name="behaviour AI" type="Node" parent="."]
+
+[node name="selector" type="Node" parent="behaviour AI"]
+script = ExtResource("1_ieg82")
+
+[node name="AttackSequence" type="Node" parent="behaviour AI/selector"]
+script = ExtResource("2_xpxsb")
+
+[node name="IsFollowThrough" type="Node" parent="behaviour AI/selector/AttackSequence"]
+script = ExtResource("3_wprhc")
+
+[node name="IsPlayerNearBy" type="Node" parent="behaviour AI/selector/AttackSequence"]
+script = ExtResource("4_s8qrt")
+
+[node name="AttackPlayer" type="Node" parent="behaviour AI/selector/AttackSequence"]
+script = ExtResource("5_3nekj")
+
+[node name="PatrolSelector" type="Node" parent="behaviour AI/selector"]
+script = ExtResource("1_ieg82")
+
+[node name="patrol" type="Node" parent="behaviour AI/selector/PatrolSelector"]
+script = ExtResource("6_qixvi")
