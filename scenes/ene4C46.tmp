@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7cwle4r67jai"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_ebvfa"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/root.gd" id="2_0bbky"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/composite_nodes/selector.gd" id="2_buhg1"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/leaf_nodes/patrol.gd" id="2_gfehk"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/leaf_nodes/sense.gd" id="3_sv5yc"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/composite_nodes/sequence.gd" id="3_wtyuf"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/leaf_nodes/attack.gd" id="4_gti8p"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/leaf_nodes/check_health.gd" id="5_wnu87"]
+[ext_resource type="Script" path="res://scripts/BehaviourAi/leaf_nodes/upgrade_health.gd" id="6_xong4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bwqni"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_ebvfa")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = SubResource("CanvasTexture_bwqni")
+polygon = PackedVector2Array(-3.78131, -1.64856, 4.664, -1.64856, 4.71869, 2.72644, -4.03131, 2.82019)
+uv = PackedVector2Array(-3.78131, -1.64856, 4.664, -1.64856, 4.71869, 2.72644, -4.03131, 2.82019)
+
+[node name="BehaviourAi" type="Node" parent="."]
+script = ExtResource("2_0bbky")
+
+[node name="selector" type="Node" parent="BehaviourAi"]
+script = ExtResource("2_buhg1")
+
+[node name="CombatSequence" type="Node" parent="BehaviourAi/selector"]
+script = ExtResource("3_wtyuf")
+
+[node name="patrol" type="Node" parent="BehaviourAi/selector/CombatSequence"]
+script = ExtResource("2_gfehk")
+
+[node name="sense" type="Node" parent="BehaviourAi/selector/CombatSequence"]
+script = ExtResource("3_sv5yc")
+
+[node name="attack" type="Node" parent="BehaviourAi/selector/CombatSequence"]
+script = ExtResource("4_gti8p")
+
+[node name="HeaathSequence" type="Node" parent="BehaviourAi/selector"]
+script = ExtResource("3_wtyuf")
+
+[node name="check_health" type="Node" parent="BehaviourAi/selector/HeaathSequence"]
+script = ExtResource("5_wnu87")
+
+[node name="upgrade_health" type="Node" parent="BehaviourAi/selector/HeaathSequence"]
+script = ExtResource("6_xong4")
