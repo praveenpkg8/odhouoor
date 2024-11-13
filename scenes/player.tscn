@@ -9,6 +9,7 @@
 size = Vector2(1316.61, 555.526)
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(2.635, 2.635)
 script = ExtResource("1_yd6yw")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
